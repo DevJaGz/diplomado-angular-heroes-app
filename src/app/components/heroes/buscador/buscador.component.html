@@ -1,18 +1,22 @@
-<div class="text-center mb-4">
-   <h4 *ngIf="termino != '' && heroes && heroes.length > 0">
-      Buscando: <span class="text-success">'{{termino}}'</span>
-   </h4>
+<div class="card p-2 my-4">
+   <h5 class="text-center mt-4">Componente Buscador</h5>
+   <hr>
+   <div class="text-center mb-4">
+      <h4 *ngIf="termino != '' && heroes && heroes.length > 0">
+         Buscando: <span class="text-success">'{{termino}}'</span>
+      </h4>
 
 
-   <h4 *ngIf="heroes && heroes.length == 0" class="text-danger">
-      No se encontrarón resultados para
-      <span class="text-dark"> '{{termino}}' </span>
-      <span><i class="fas fa-sad-cry"></i></span>
-   </h4>
-</div>
+      <h4 *ngIf="termino != '' && heroes && heroes.length == 0" class="text-danger">
+         No se encontrarón resultados para
+         <span class="text-dark"> '{{termino}}' </span>
+         <span><i class="fas fa-sad-cry"></i></span>
+      </h4>
+   </div>
 
 
-<div class="card-columns text-center">
-   <app-heroe-tarjeta [heroe]="heroe" [index]="heroe.idx" *ngFor="let heroe of heroes">
-   </app-heroe-tarjeta>
+   <div class="card-columns text-center">
+      <app-heroe-tarjeta [heroe]="heroe" [index]="heroe.idx" *ngFor="let heroe of heroes">
+      </app-heroe-tarjeta>
+   </div>
 </div>

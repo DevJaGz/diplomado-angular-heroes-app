@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IHeroe } from 'src/app/interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -27,5 +27,7 @@ export class HeroeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }

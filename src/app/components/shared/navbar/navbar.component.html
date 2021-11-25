@@ -39,7 +39,8 @@
          </li>
       </ul>
       <div class="col-md-4 d-flex">
-         <input (change)="buscarHeroe(textoIngresado.value)" class="form-control mr-sm-2" type="search"
+         <input (keydown)="buscarHeroee()" [(ngModel)]="texto" class="form-control mr-sm-2"
+                type="search"
                 placeholder="Search" aria-label="Search" #textoIngresado>
          <button class="btn btn-outline-primary my-2 my-sm-0" type="button"
                  (click)="buscarHeroe(textoIngresado.value)">Search</button>

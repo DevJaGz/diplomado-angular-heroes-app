@@ -78,30 +78,17 @@
 
 <hr>
 
-<div class="card-columns mt-2">
+<div>
+   <router-outlet></router-outlet>
+</div>
 
+<div class="card-columns mt-2">
    <div *ngFor="let heroe of heroes; let i=index">
-      <div class="card animated fadeIn fast">
-         <img class="card-img-top img-fluid" src="{{heroe.img}}"
-              [alt]="heroe.nombre" />
-         <div class="card-body">
-            <h4 class="card-title"> {{ heroe.nombre }} </h4>
-            <div class="row">
-               <div class="col-6">
-                  <p class="card-text"> {{ heroe.bio }} </p>
-                  <p class="card-text"> <small class="text-muted"> {{ heroe.aparicion }} </small></p>
-               </div>
-               <div class="col-6">
-                  <img style="max-width: 70px;" class="card-img-top img-fluid float-right"
-                       [src]="getCasaLogo(heroe.casa)"
-                       [alt]="heroe.casa" />
-               </div>
-            </div>
-            <button type="button" class="btn btn-primary" (click)="editar(i)">Editar</button>
-         </div>
-      </div>
+      <app-heroe-tarjeta [heroe]="heroe" [index]="i" (edit)="editar($event)"></app-heroe-tarjeta>
    </div>
 </div>
+
+
 
 <h5 class="mt-5">Formulario</h5>
 <pre>{{ formHeroe.value | json}}</pre>

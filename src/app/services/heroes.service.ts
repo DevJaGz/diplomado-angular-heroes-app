@@ -62,15 +62,24 @@ export class HeroesService {
   // Promesas = ciclo de vida depende del then y el catch
 
 
+
+
   heores$: Subject<IHeroe[]>;
   heroes: IHeroe[] = [];
+
+
+
 
   constructor() {
     this.heores$ = new Subject();
     console.log("Serivicio Heroes listo para utilizar");
   }
 
-  getHeroes(): Observable<IHeroe[]> {
+  getHeroes(): IHeroe[] {
+    return [...this.heroes]
+  }
+
+  getHeroes$(): Observable<IHeroe[]> {
     return this.heores$.asObservable();
   }
 
@@ -83,6 +92,16 @@ export class HeroesService {
     this.heores$.next(this.heroes);
   }
 
+  editHeroe(index: number, newValue: IHeroe) {
+    this.heroes[index] = newValue;
+    this.heores$.next(this.heroes);
+  }
+
+  deleteHeroe(index: number) {
+    this.heroes.splice(index, 1);
+    this.heores$.next(this.heroes);
+  }
+
   buscarHeroe(termino: string): IHeroe[] {
     const consulta = this.heroes.map((heroe, index) => {
       heroe.idx = index
@@ -91,5 +110,7 @@ export class HeroesService {
 
     return consulta
   }
+
+
 
 }

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { IHeroe } from '../../interfaces/heroes.interface';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HeroesService } from 'src/app/services/heroes.service';
 
 
 interface IMatch {
@@ -36,12 +37,19 @@ export class HeroesComponent implements OnInit {
   ]
 
   anios: number[] = []
-
   heroes: IHeroe[] = [];
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private _heroesService: HeroesService) {
+
+
+  }
 
   ngOnInit(): void {
+    console.log("onInit Heroes");
+    this._heroesService.getHeroes$().subscribe((heroes: IHeroe[]) => {
+      this.heroes = heroes
+    })
+    this.heroes = this._heroesService.getHeroes()
     this.anios = this.getAnios()
     this.buildFormHeroe();
   }
@@ -106,7 +114,7 @@ export class HeroesComponent implements OnInit {
   createHero(values: IHeroe) {
     const heroe = { ...values }
     console.log(heroe);
-    this.heroes.push(heroe)
+    this._heroesService.addHeroes(heroe)
     this.reset({} as IHeroe)
   }
 
@@ -124,12 +132,12 @@ export class HeroesComponent implements OnInit {
   }
 
   eliminar() {
-    this.heroes.splice(this.indexHeroeModoEdicion, 1)
+    this._heroesService.deleteHeroe(this.indexHeroeModoEdicion)
     this.reset({} as IHeroe)
   }
 
   aceptar() {
-    this.heroes[this.indexHeroeModoEdicion] = this.matchFromForm(this.formHeroe.value)
+    this._heroesService.editHeroe(this.indexHeroeModoEdicion, this.matchFromForm(this.formHeroe.value))
     this.reset({} as IHeroe)
   }
 
