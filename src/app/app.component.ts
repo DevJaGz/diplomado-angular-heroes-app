@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'proyecto-heroes';
+
+  numero = 0;
+
+  guardarResultado($event: any) {
+    this.numero = $event;
+  }
+
+
+
 }

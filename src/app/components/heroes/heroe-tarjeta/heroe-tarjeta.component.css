@@ -1,0 +1,6 @@
+.card {}
+
+.card .card-body .card-text:first-of-type {
+   height: 150px;
+   overflow-y: auto;
+}

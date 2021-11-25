@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+   <a class="navbar-brand" [routerLink]="['home']">
+      <img src="assets/img/A-64.png" width="30" height="30" class="d-inline-block align-top" alt="Logo">
+      <span class="font-weight-bold">ngular</span>
+   </a>
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['login']" routerLinkActive="active"> <span><i
+                     class="fas fa-sign-in-alt"></i></span> Login</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['home']" routerLinkActive="active"> <span><i
+                     class="fas fa-home"></i></span> Home</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['heroes']" routerLinkActive="active"> <span><i
+                     class="fas fa-mask"></i></span> Heroes</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['about']" routerLinkActive="active"><span><i
+                     class="fas fa-address-card"></i></span> About</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['pipes']" routerLinkActive="active"><span><i
+                     class="fab fa-pied-piper-pp"></i></span> Pipes</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['form-ngmodel']" routerLinkActive="active"> <span><i
+                     class="fab fa-wpforms"></i></span> Form ngModel</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link" [routerLink]="['formbuild']" routerLinkActive="active"> <span><i
+                     class="fab fa-wpforms"></i></span> Form formbuild</a>
+         </li>
+      </ul>
+      <div class="col-md-4 d-flex">
+         <input (change)="buscarHeroe(textoIngresado.value)" class="form-control mr-sm-2" type="search"
+                placeholder="Search" aria-label="Search" #textoIngresado>
+         <button class="btn btn-outline-primary my-2 my-sm-0" type="button"
+                 (click)="buscarHeroe(textoIngresado.value)">Search</button>
+      </div>
+      <app-usuario></app-usuario>
+   </div>
+</nav>

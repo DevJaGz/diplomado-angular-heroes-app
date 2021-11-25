@@ -1,0 +1,107 @@
+<h1 class="text-center my-4">Heroes <small class="text-muted">Marvel y DC</small></h1>
+
+<hr>
+
+<form [formGroup]="formHeroe" (ngSubmit)="onSubmit()" class="my-4" autocomplete="off">
+   <!-- Nombre -->
+   <div class="row mb-2">
+      <label for="nombre" class="col-3">Nombre</label>
+      <div class="col-9">
+         <!-- <input type="text" id="nombre" class=" form-control" formControlName="nombre" placeholder="Nombre del heroe"> -->
+         <select class="form-control" formControlName="nombre">
+            <option [value]="null">Seleccione un nombre ...</option>
+            <option *ngFor="let nombre of nombres; let i=index" [value]="i">{{nombre.etiqueta}}</option>
+         </select>
+         <small
+                *ngIf="showWarning('nombre')"
+                class="text-danger">El nombre del heroe es requerido</small>
+      </div>
+   </div>
+   <!-- Biografía -->
+   <div class="row mb-2">
+      <label for="bio" class="col-3">Biografía</label>
+      <div class="col-9">
+         <textarea type="text" id="bio" class="form-control" formControlName="bio" placeholder="Escriba una Biografía">
+         </textarea>
+         <small
+                *ngIf="showWarning('bio')"
+                class="text-danger">La biografía es requerida</small>
+      </div>
+   </div>
+   <!-- Aparición -->
+   <div class="row mb-2">
+      <label for="aparicion" class="col-3">Aparición</label>
+      <div class="col-9">
+         <!-- <input type="text" id="aparicion" class=" form-control" formControlName="aparicion"
+                placeholder="Aparición del heroe"> -->
+         <select class="form-control" formControlName="aparicion">
+            <option [value]="null">Seleccione un año ...</option>
+            <option *ngFor="let anio of anios" [value]="anio">{{anio}}</option>
+         </select>
+         <small
+                *ngIf="showWarning('aparicion')"
+                class="text-danger">El año es requerido</small>
+      </div>
+   </div>
+   <!-- Casa -->
+   <div class="row mb-2">
+      <label for="casa" class="col-3">Casa</label>
+      <div class="col-9">
+         <!-- <input type="text" id="casa" class="form-control" formControlName="casa"
+                placeholder="Casa del heroe"> -->
+         <select class="form-control" formControlName="casa">
+            <option [value]="null">Seleccione una casa ...</option>
+            <option *ngFor="let casa of casas; let i=index" [value]="i">{{casa.etiqueta}}</option>
+         </select>
+         <small
+                *ngIf="showWarning('casa')"
+                class="text-danger">La casa requerida</small>
+      </div>
+   </div>
+   <!-- Botones -->
+   <div class=" row my-4">
+      <div class="col">
+         <button
+                 *ngIf="!modoEdicion"
+                 type="submit" class="btn btn-primary float-right" [disabled]="formHeroe.invalid"> Agregar </button>
+         <button
+                 *ngIf="modoEdicion"
+                 type="button" class="btn btn-success float-right" [disabled]="formHeroe.invalid" (click)="aceptar()">
+            Aceptar</button>
+         <button
+                 *ngIf="modoEdicion"
+                 type="button" class="btn btn-danger mr-2 float-right" (click)="eliminar()"> Eliminar
+         </button>
+      </div>
+   </div>
+</form>
+
+<hr>
+
+<div class="card-columns mt-2">
+
+   <div *ngFor="let heroe of heroes; let i=index">
+      <div class="card animated fadeIn fast">
+         <img class="card-img-top img-fluid" src="{{heroe.img}}"
+              [alt]="heroe.nombre" />
+         <div class="card-body">
+            <h4 class="card-title"> {{ heroe.nombre }} </h4>
+            <div class="row">
+               <div class="col-6">
+                  <p class="card-text"> {{ heroe.bio }} </p>
+                  <p class="card-text"> <small class="text-muted"> {{ heroe.aparicion }} </small></p>
+               </div>
+               <div class="col-6">
+                  <img style="max-width: 70px;" class="card-img-top img-fluid float-right"
+                       [src]="getCasaLogo(heroe.casa)"
+                       [alt]="heroe.casa" />
+               </div>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="editar(i)">Editar</button>
+         </div>
+      </div>
+   </div>
+</div>
+
+<h5 class="mt-5">Formulario</h5>
+<pre>{{ formHeroe.value | json}}</pre>

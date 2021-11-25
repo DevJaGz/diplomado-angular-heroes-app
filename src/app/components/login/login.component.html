@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh">
+   <div class="card p-5 d-flex">
+      <div class="row mb-3 d-flex flex-column">
+         <div class="col">
+            <label for="user">Usuario</label>
+         </div>
+         <div class="col">
+            <input type="email" class="form-control" id="user" #user>
+         </div>
+      </div>
+      <div class="row mb-3 d-flex flex-column">
+         <div class="col">
+            <label for="pass">Contraseña</label>
+         </div>
+         <div class="col">
+            <input type="password" class="form-control" id="pass" #pass>
+         </div>
+      </div>
+
+      <button (click)="onLogin({user: user.value, pass: pass.value})" type="submit"
+         class="btn btn-primary ">Login</button>
+   </div>
+</div>
