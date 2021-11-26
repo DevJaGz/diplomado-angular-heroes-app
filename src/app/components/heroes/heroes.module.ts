@@ -6,6 +6,7 @@ import { HeroesComponent } from "./heroes.component";
 import { HeroeTarjetaComponent } from "./heroe-tarjeta/heroe-tarjeta.component";
 import { BuscadorComponent } from './buscador/buscador.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PipesModule } from '../../pipes/pipes.module';
 
 
 
@@ -18,7 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     HeroesRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ]
 })
 export class HeroesModule { }

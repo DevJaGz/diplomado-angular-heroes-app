@@ -22,7 +22,7 @@ export class HeroesComponent implements OnInit {
   formHeroe = new FormGroup({});
 
   nombres: IMatch[] = [
-    { imgPath: 'assets/img/aquaman.png', etiqueta: 'Agua Man' },
+    { imgPath: 'assets/img/aquaman.png', etiqueta: 'Aqua Man' },
     { imgPath: 'assets/img/batman.png', etiqueta: 'Bat Man' },
     { imgPath: 'assets/img/daredevil.png', etiqueta: 'Daredevil' },
     { imgPath: 'assets/img/hulk.png', etiqueta: 'Hulk' },
@@ -92,7 +92,7 @@ export class HeroesComponent implements OnInit {
       ...value,
       nombre: this.nombres[parseInt(value.nombre)].etiqueta,
       img: this.nombres[parseInt(value.nombre)].imgPath,
-      casa: this.casas[parseInt(value.casa)].etiqueta,
+      casa: this.casas[parseInt(value.casa)].imgPath,
     }
     return values
   }
@@ -102,7 +102,7 @@ export class HeroesComponent implements OnInit {
       nombre: this.nombres.map(nombre => (nombre.etiqueta === heroe.nombre) ? true : false).indexOf(true).toString(),
       bio: heroe.bio,
       aparicion: heroe.aparicion,
-      casa: this.casas.map(casa => (casa.etiqueta === heroe.casa) ? true : false).indexOf(true).toString()
+      casa: this.casas.map(casa => (casa.imgPath === heroe.casa) ? true : false).indexOf(true).toString()
     }
     return value
   }

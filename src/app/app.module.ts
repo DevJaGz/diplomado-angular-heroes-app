@@ -21,11 +21,11 @@ import { registerLocaleData } from '@angular/common';
 import { LoginComponent } from './components/login/login.component';
 import { UsuarioService } from './services/usuario.service';
 import { UsuarioComponent } from './components/usuario/usuario.component';
-import { LimitStringPipe } from './pipes/limit-string.pipe';
 import { PaisService } from './services/pais.service';
 import { FormularioNgmodelComponent } from './components/formularios/formulario-ngmodel/formulario-ngmodel.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormularioReactivosComponent } from './components/formularios/formulario-reactivos/formulario-reactivos.component';
+import { PipesModule } from './pipes/pipes.module';
 
 
 registerLocaleData(localEs);
@@ -48,7 +48,6 @@ registerLocaleData(localFr);
     DomSeguroPipe,
     LoginComponent,
     UsuarioComponent,
-    LimitStringPipe,
     FormularioNgmodelComponent,
     FormularioReactivosComponent
   ],
@@ -57,7 +56,8 @@ registerLocaleData(localFr);
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PipesModule
   ],
   providers: [HeroesService,
     UsuarioService,

@@ -82,13 +82,13 @@
    <router-outlet></router-outlet>
 </div>
 
-<div class="card-columns mt-2">
+<div class="card-columns mt-2" style="min-height: 100%;">
    <div *ngFor="let heroe of heroes; let i=index">
       <app-heroe-tarjeta [heroe]="heroe" [index]="i" (edit)="editar($event)"></app-heroe-tarjeta>
    </div>
 </div>
 
 
-
+<!-- 
 <h5 class="mt-5">Formulario</h5>
-<pre>{{ formHeroe.value | json}}</pre>
+<pre>{{ formHeroe.value | json}}</pre> -->
