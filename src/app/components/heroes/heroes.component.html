@@ -21,11 +21,12 @@
    <div class="row mb-2">
       <label for="bio" class="col-3">Biografía</label>
       <div class="col-9">
-         <textarea type="text" id="bio" class="form-control" formControlName="bio" placeholder="Escriba una Biografía">
+         <textarea type="text" id="bio" class="form-control" formControlName="bio"
+                   placeholder="Escriba una Biografía con un mínimo de 10 caracteres">
          </textarea>
          <small
                 *ngIf="showWarning('bio')"
-                class="text-danger">La biografía es requerida</small>
+                class="text-danger">La biografía es requerida con un mínimo de 10 caracteres</small>
       </div>
    </div>
    <!-- Aparición -->
@@ -89,6 +90,6 @@
 </div>
 
 
-<!-- 
-<h5 class="mt-5">Formulario</h5>
-<pre>{{ formHeroe.value | json}}</pre> -->
+
+<!-- <h5 class="mt-5">Formulario Valores</h5>
+<pre>{{ formHeroe }}</pre> -->

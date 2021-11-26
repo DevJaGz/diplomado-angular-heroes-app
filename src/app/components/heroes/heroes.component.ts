@@ -67,7 +67,7 @@ export class HeroesComponent implements OnInit {
   buildFormHeroe(): void {
     this.formHeroe = this._formBuilder.group({
       nombre: [null, [Validators.required, this.isNotNull]],
-      bio: ["", Validators.required],
+      bio: ["", [Validators.required, Validators.minLength(10)]],
       aparicion: [null, Validators.required],
       casa: [null, [Validators.required, this.isNotNull]]
     })
