@@ -1,18 +1,26 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { LimitStringPipe } from './limit-string.pipe';
+import { CapitalizarPipe } from './capitalizar.pipe';
+import { DomSeguroPipe } from './dom-seguro.pipe';
+import { MayusculaPipe } from './mayuscula.pipe';
+import { PassCustomPipe } from './pass-custom.pipe';
 
 
 
 @NgModule({
   declarations: [
-    LimitStringPipe
-  ],
-  imports: [
-    CommonModule
+    LimitStringPipe,
+    CapitalizarPipe,
+    DomSeguroPipe,
+    MayusculaPipe,
+    PassCustomPipe
   ],
   exports: [
-    LimitStringPipe
+    LimitStringPipe,
+    CapitalizarPipe,
+    DomSeguroPipe,
+    MayusculaPipe,
+    PassCustomPipe
   ]
 })
 export class PipesModule { }
