@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AboutComponent } from './components/about/about.component';
 import { HomeComponent } from './components/home/home.component';
-import { HeroeComponent } from './components/heroe/heroe.component';
+import { HeroeComponent } from './components/heroes/heroe/heroe.component';
 import { BuscadorComponent } from './components/heroes/buscador/buscador.component';
 import { EjemplosPipesComponent } from './components/ejemplos-pipes/ejemplos-pipes.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,11 +10,10 @@ import { FormularioReactivosComponent } from './components/formularios/formulari
 
 const routes: Routes = [
 
-  { path: "login", component: LoginComponent },
-  { path: "home", component: HomeComponent },
-  { path: "about", component: AboutComponent },
+  { path: "login", loadChildren: () => import('./components/login/login.module').then(m => m.LoginModule) },
+  { path: "home", loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
+  { path: "about", loadChildren: () => import('./components/about/about.module').then(m => m.AboutModule) },
   { path: "heroes", loadChildren: () => import('./components/heroes/heroes.module').then(m => m.HeroesModule) },
-  { path: "heroe/:id", component: HeroeComponent },
   { path: "pipes", component: EjemplosPipesComponent },
   { path: "form-ngmodel", component: FormularioNgmodelComponent },
   { path: "formbuild", component: FormularioReactivosComponent },

@@ -1,7 +1,8 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IHeroe } from '../../interfaces/heroes.interface';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeroesService } from 'src/app/services/heroes.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 interface IMatch {
@@ -39,7 +40,7 @@ export class HeroesComponent implements OnInit {
   anios: number[] = []
   heroes: IHeroe[] = [];
 
-  constructor(private _formBuilder: FormBuilder, private _heroesService: HeroesService) {
+  constructor(private _formBuilder: FormBuilder, private _heroesService: HeroesService, private _activeRoute: ActivatedRoute, private _router: Router) {
 
 
   }
@@ -52,6 +53,15 @@ export class HeroesComponent implements OnInit {
     this.heroes = this._heroesService.getHeroes()
     this.anios = this.getAnios()
     this.buildFormHeroe();
+    if (this.heroes.length > 0) {
+      try {
+        const idParam = parseInt(this._router.url.split("/")[2])
+        this.editar(idParam)
+      } catch (error) {
+        console.warn("No fue posible extraer el index de la url");
+      }
+    }
+
   }
 
   getAnios() {

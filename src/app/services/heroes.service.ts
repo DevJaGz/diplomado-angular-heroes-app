@@ -58,11 +58,6 @@ export class HeroesService {
   //   }
   // ];
 
-  //Observables = ciclo de vida infinito o hasta que lo destruyamos
-  // Promesas = ciclo de vida depende del then y el catch
-
-
-
 
   heores$: Subject<IHeroe[]>;
   heroes: IHeroe[] = [];

@@ -20,15 +20,14 @@ export class BuscadorComponent implements OnInit {
     this._activeRoute.params.subscribe(params => {
       this.termino = params["termino"]
       console.log("termino:", this.termino);
-
-      if (this.termino === "") {
-        this.heroes = []
-        this._route.navigate(['/heroes'])
-      } else {
-        this.heroes = this._heroesService.buscarHeroe(this.termino)
-      }
+      this.heroes = this._heroesService.buscarHeroe(this.termino)
     })
 
+  }
+
+  goToEdit(index: number): void {
+    console.log("GO TO EDIT", index);
+    this._route.navigate(['heroes', index])
   }
 
 }

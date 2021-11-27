@@ -6,7 +6,6 @@
          Buscando: <span class="text-success">'{{termino}}'</span>
       </h4>
 
-
       <h4 *ngIf="termino != '' && heroes && heroes.length == 0" class="text-danger">
          No se encontrarón resultados para
          <span class="text-dark"> '{{termino}}' </span>
@@ -16,7 +15,7 @@
 
 
    <div class="card-columns text-center">
-      <app-heroe-tarjeta [heroe]="heroe" [index]="heroe.idx" *ngFor="let heroe of heroes">
+      <app-heroe-tarjeta [heroe]="heroe" [index]="heroe.idx" (edit)="goToEdit($event)" *ngFor="let heroe of heroes">
       </app-heroe-tarjeta>
    </div>
 </div>

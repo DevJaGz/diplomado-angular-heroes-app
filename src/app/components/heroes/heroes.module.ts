@@ -7,6 +7,7 @@ import { HeroeTarjetaComponent } from "./heroe-tarjeta/heroe-tarjeta.component";
 import { BuscadorComponent } from './buscador/buscador.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PipesModule } from '../../pipes/pipes.module';
+import { HeroeComponent } from './heroe/heroe.component';
 
 
 
@@ -14,7 +15,8 @@ import { PipesModule } from '../../pipes/pipes.module';
   declarations: [
     HeroesComponent,
     HeroeTarjetaComponent,
-    BuscadorComponent
+    BuscadorComponent,
+    HeroeComponent
   ],
   imports: [
     CommonModule,

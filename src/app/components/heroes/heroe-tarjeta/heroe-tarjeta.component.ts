@@ -10,7 +10,7 @@ import { IHeroe } from 'src/app/interfaces/heroes.interface';
 export class HeroeTarjetaComponent implements OnInit {
   @Input() heroe: any;
   @Input() index: number | undefined = 0;
-  @Output() edit = new EventEmitter();
+  @Output() edit = new EventEmitter<number>();
 
   constructor(private _router: Router) { }
 
@@ -18,6 +18,6 @@ export class HeroeTarjetaComponent implements OnInit {
   }
 
   verHeroe() {
-    this._router.navigate(['/heroe', this.index])
+    this._router.navigate(['heroes', 'heroe', this.index])
   }
 }
